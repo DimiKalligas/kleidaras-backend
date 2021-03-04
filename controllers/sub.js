@@ -4,8 +4,16 @@ const slugify = require("slugify");
 
 exports.create = async (req, res) => {
   try {
-    const { name, parent } = req.body;
-    res.json(await new Sub({ name, parent, slug: slugify(name) }).save());
+    console.log('In sub create controller I get:', req.body)
+    const { values, parent } = req.body;
+    console.log(values.name)
+    const name = values.name
+    const images = values.images
+
+
+    // req.body.slug = slugify(req.body.name);
+    // res.json(await new Sub(req.body).save());
+    res.json(await new Sub({ name, images, parent, slug: slugify(name) }).save());
   } catch (err) {
     console.log("SUB CREATE ERR ----->", err);
     res.status(400).send("Create sub failed");

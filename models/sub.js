@@ -10,6 +10,9 @@ const subSchema = new mongoose.Schema(
       minlength: [2, "Too short"],
       maxlength: [32, "Too long"],
     },
+    images: {
+      type: Array,
+    },
     slug: {
       type: String,
       unique: true,
